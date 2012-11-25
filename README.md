@@ -19,6 +19,10 @@ Available functions and assertions:
     fail(message)
     boom(function, args, message)
 
+    -- Optionally close this way to check if you ran the right number of
+    -- tests
+    done()
+
 Most of those are self-explanatory. The last checks if a function raises an
 error when given specific arguments. The `args` parameter expects a table.
 It can be empty, but not `nil`.
