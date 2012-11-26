@@ -12,6 +12,20 @@ local function printf(fmt, ...)
   return io.write(sprintf(fmt, ...))
 end
 
+-- A bargain-basement set of before and after hooks. Use as follows:
+-- 1. In the test file, define global setup and teardown methods.
+-- 2. Require luatap *after* that.
+local setup = _G["setup"]
+local teardown = _G["teardown"]
+
+local function setup_call()
+  if setup then setup() end
+end
+
+local function teardown_call()
+  if teardown then teardown() end
+end
+
 -- All other tests are defined in terms of this primitive, which is
 -- kept private.
 local function _test(exp, msg)
@@ -24,6 +38,8 @@ local function _test(exp, msg)
     msg = ''
   end
 
+  setup_call()
+
   if exp then
     printf("ok %s%s\n", test_count, msg)
   else
@@ -32,6 +48,8 @@ local function _test(exp, msg)
     printf("# Trouble in %s around line %s\n", slice(info.source, 2),
       info.currentline)
   end
+
+  teardown_call()
 end
 
 local function ok(expression, msg)
