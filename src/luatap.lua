@@ -113,14 +113,20 @@ local function plan(n)
 end
 tap.plan = plan
 
--- If you want to keep prove or other strict TAP tools happy, add a call to
--- done() at the end of your tests. This will give you a 'plan' at the end
--- of your output. (I hate having to count tests up-front, and I don't want
--- to make the user wait for all tests to run before I begin printing
--- results.)
-local function done()
-  if expected == nil then
-    printf("# No plan! Ack!")
+-- The promised alternative to plan(n). This function can be used in one of
+-- two ways. Most obviously, if you don't know how many tests you plan to
+-- run or you just hate to manually count, then call done() with no
+-- parameters. In this case, done will emit 1..n where n is the number of
+-- tests that actually ran. This will satisfy traditional TAP tools.
+--
+-- On the other hand, if you know the number and simply prefer done(n) at
+-- the end to plan(n) at the top, then you can call done(n) with a number.
+-- If the number doesn't match the actual number of tests run, you'll get
+-- a 'Bad plan' warning.
+local function done(n)
+  local expected = tonumber(n)
+  if not expected or test_count == expected then
+    printf('1..%d\n', test_count)
   elseif expected ~= test_count then
     local s
     if expected == 1 then s = '' else s = 's' end
