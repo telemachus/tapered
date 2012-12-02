@@ -8,7 +8,7 @@ local str_find = string.find
 local unpack = unpack
 local tonumber = tonumber
 local test_count = 0
-local expected = nil
+local debug_level = 3
 local function printf(fmt, ...)
   return io.write(sprintf(fmt, ...))
 end
@@ -31,7 +31,6 @@ end
 -- kept private.
 local function _test(exp, msg)
   test_count = test_count + 1
-  local debug_level = 3
 
   if msg then
     msg = sprintf(" - %s", msg)
