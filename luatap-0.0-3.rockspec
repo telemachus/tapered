@@ -1,7 +1,7 @@
 package = "LuaTap"
 version = "0.0-3"
 source = {
-    url = "https://github.com/telemachus/luatap"
+    url = "https://github.com/telemachus/lua-tap"
 }
 description = {
     summary = "A very simple tap testing module for Lua",
