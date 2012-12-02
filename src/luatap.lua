@@ -6,6 +6,7 @@ local slice = string.sub
 local get_info = debug.getinfo
 local str_find = string.find
 local unpack = unpack
+local tonumber = tonumber
 local test_count = 0
 local expected = nil
 local function printf(fmt, ...)
@@ -102,10 +103,13 @@ local function boom(func, args, msg)
 end
 tap.boom = boom
 
--- Got to have a plan
+-- A traditional plan function. If you don't mind counting tests, this is
+-- the easiest way to keep TAP tools happy. Pass in a number and done.
+--
+-- If, however, you don't like counting or you don't know in advance,
+-- there's an alternative. See the done() function below.
 local function plan(n)
   printf('1..%d\n', n)
-  expected = n
 end
 tap.plan = plan
 
