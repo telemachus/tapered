@@ -13,18 +13,15 @@ local function printf(fmt, ...)
   return io.write(sprintf(fmt, ...))
 end
 
--- A bargain-basement set of before and after hooks. Use as follows:
+-- A bargain-basement pair of setup and teardown hooks. Use as follows:
 -- 1. In the test file, define global setup and teardown methods.
--- 2. Require luatap *after* that.
-local setup = _G["setup"]
-local teardown = _G["teardown"]
-
+-- 2. Redefine them as wanted, and they will _dynamically_ update.
 local function setup_call()
-  if setup then setup() end
+  if _G["setup"] then return _G["setup"]() end
 end
 
 local function teardown_call()
-  if teardown then teardown() end
+  if _G["teardown"] then return _G["teardown"]() end
 end
 
 -- All other tests are defined in terms of this primitive, which is
