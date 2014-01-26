@@ -1,5 +1,5 @@
-package = "LuaTap"
-version = "0.0-4"
+package = "tap"
+version = "0.0-5"
 source = {
     url = "https://github.com/telemachus/lua-tap"
 }
@@ -17,6 +17,6 @@ dependencies = {
 build = {
     type = "builtin",
     modules = {
-        luatap = "src/luatap.lua"
+        luatap = "src/tap.lua"
     }
 }
