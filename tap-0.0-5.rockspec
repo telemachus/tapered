@@ -17,6 +17,6 @@ dependencies = {
 build = {
     type = "builtin",
     modules = {
-        luatap = "src/tap.lua"
+        tap = "src/tap.lua"
     }
 }
