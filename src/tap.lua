@@ -12,6 +12,7 @@ local debug_level = 3
 local function printf(fmt, ...)
   return io.write(sprintf(fmt, ...))
 end
+local u = require 'utilitybelt'
 
 -- A bargain-basement pair of setup and teardown hooks. Use as follows:
 -- 1. In the test file, define global setup and teardown methods.
@@ -68,6 +69,16 @@ local function isnt(actual, expected, msg)
   _test(actual ~= expected, msg)
 end
 tap.isnt = isnt
+
+local function same(actual, expected, msg)
+  _test(u.same(actual, expected), msg)
+end
+tap.same = same
+
+local function same_mt(actual, expected, msg)
+  _test(u.same_mt(actual, expected), msg)
+end
+tap.same_mt = same_mt
 
 local function like(str, pattern, msg)
   _test(str_find(str, pattern), msg)
