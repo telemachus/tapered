@@ -1,18 +1,21 @@
 local tap = {}
 
 -- Helper variables and functions
-local sprintf = string.format
-local slice = string.sub
 local get_info = debug.getinfo
+local pcall = pcall
+local slice = string.sub
+local sprintf = string.format
 local str_find = string.find
-local unpack = unpack
 local tonumber = tonumber
+local unpack = unpack
+
+local u = require 'utilitybelt'
+local printf = u.printf
+local same = u.same
+local same_mt = u.same_mt
+
 local test_count = 0
 local debug_level = 3
-local function printf(fmt, ...)
-  return io.write(sprintf(fmt, ...))
-end
-local u = require 'utilitybelt'
 
 -- A bargain-basement pair of setup and teardown hooks. Use as follows:
 -- 1. In the test file, define global setup and teardown methods.
@@ -43,82 +46,61 @@ local function _test(exp, msg)
   else
     printf("not ok %s%s\n", test_count, msg)
     info = get_info(debug_level)
-    printf("# Trouble in %s around line %s\n", slice(info.source, 2),
-      info.currentline)
+    printf("# Trouble in %s around line %s\n",
+           slice(info.source, 2), info.currentline)
   end
 
   teardown_call()
 end
 
-local function ok(expression, msg)
+function tap.ok(expression, msg)
   _test(expression, msg)
 end
-tap.ok = ok
 
-local function nok(expression, msg)
+function tap.nok(expression, msg)
   _test(not expression, msg)
 end
-tap.nok = nok
 
-local function is(actual, expected, msg)
+function tap.is(actual, expected, msg)
   _test(actual == expected, msg)
 end
-tap.is = is
 
-local function isnt(actual, expected, msg)
+function tap.isnt(actual, expected, msg)
   _test(actual ~= expected, msg)
 end
-tap.isnt = isnt
 
-local function same(actual, expected, msg)
-  _test(u.same(actual, expected), msg)
+function tap.same(actual, expected, msg)
+  _test(same(actual, expected), msg)
 end
-tap.same = same
 
-local function same_mt(actual, expected, msg)
-  _test(u.same_mt(actual, expected), msg)
+function tap.same_mt(actual, expected, msg)
+  _test(same_mt(actual, expected), msg)
 end
-tap.same_mt = same_mt
 
-local function like(str, pattern, msg)
+function tap.like(str, pattern, msg)
   _test(str_find(str, pattern), msg)
 end
-tap.like = like
 
-local function unlike(str, pattern, msg)
+function tap.unlike(str, pattern, msg)
   _test(not str_find(str, pattern), msg)
 end
-tap.unlike = unlike
 
-local function pass(msg)
+function tap.pass(msg)
   _test(true, msg)
 end
-tap.pass = pass
 
-local function fail(msg)
+function tap.fail(msg)
   _test(false, msg)
 end
-tap.fail = fail
 
 -- I really need a better name for this one, don't I?
-local function boom(func, args, msg)
+function tap.boom(func, args, msg)
   err, errmsg = pcall(func, unpack(args))
   _test(not err, msg)
-  if errmsg then
+  if not err and errmsg then
     printf('# Got this error:\n# %s\n', errmsg)
   end
 end
-tap.boom = boom
-
--- A traditional plan function. If you don't mind counting tests, this is
--- the easiest way to keep TAP tools happy. Pass in a number and done.
---
--- If, however, you don't like counting or you don't know in advance,
--- there's an alternative. See the done() function below.
-local function plan(n)
-  printf('1..%d\n', n)
-end
-tap.plan = plan
 
 -- The promised alternative to plan(n). This function can be used in one of
 -- two ways. Most obviously, if you don't know how many tests you plan to
