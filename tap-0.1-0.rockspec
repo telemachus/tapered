@@ -1,5 +1,5 @@
 package = "tap"
-version = "0.0-6"
+version = "0.1-0"
 source = {
     url = "https://github.com/telemachus/lua-tap"
 }
