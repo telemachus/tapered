@@ -1,8 +1,8 @@
 package = 'tapered'
-version = '1.0-0'
+version = '1.0-1'
 source = {
-    url = 'https://bitbucket.org/telemachus/tapered',
-    tag = 'v1.0-0'
+    url = 'https://bitbucket.org/telemachus/tapered/downloads/tapered-v1.0-1.tar.gz',
+    dir = 'tapered',
 }
 description = {
     summary = 'Very minimal tap testing for Lua.',
