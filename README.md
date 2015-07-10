@@ -127,8 +127,7 @@ be self-explanatory and are probably of little use to most people.
 ## Credits
 
 For the `same` method I took ideas and code from [Penlight][p], [Underscore][u]
-and [luassert][l]. Very little is in that method is original to me
-tweaked things a bit.
+and [luassert][l]. I thank all the people who worked on those.
 
 Indirect inspirations include [knock][k], [Test::More][tm], and [bats][b]—not so
 much for code as for ideas about testing and simplicity.
@@ -145,7 +144,7 @@ All the mistakes are mine. See [version history][c] for release details.
 
 ---
 
-(c) 2012-2015 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][L] for
+(c) 2012-2015 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][li] for
 details.
 
-[L]: /LICENSE.md
+[li]: /LICENSE.md

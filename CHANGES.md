@@ -1,6 +1,6 @@
 # tapered version history
 
-## *1.0-0* (? ?, 2015)
+## *1.0-0* (July 10, 2015)
 
 + Initial public release
 

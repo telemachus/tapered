@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Peter Aronoff">
+<title>tapered documentation</title>
+<link rel="stylesheet" href="normalize.css" media="screen,projection">
+<link rel="stylesheet" href="screen.css" media="screen,projection">
+</head>
+<body>
+<h1>tapered</h1>
+
+<h2>Synopsis</h2>
+
+<p>Very minimal tap testing for Lua. Arguably too minimal.</p>
+
+<h2>Assertions</h2>
+
+<p>The <code>message</code> parameter is always optional. Brief messages help make test output
+clearer to readers, but are not needed if the output goes straight to another
+program for parsing.</p>
+
+<ul>
+<li><p><code>ok(expression, [message])</code> Tests whether <code>expression</code> returns a truthy
+value.</p></li>
+<li><p><code>nok(expression, [message])</code> Tests whether <code>expression</code> returns a falsy
+value.</p></li>
+<li><p><code>is(actual, expected, [message])</code> Tests whether <code>actual</code> is equal to
+<code>expected</code>. The test uses <code>==</code> internally.</p></li>
+<li><p><code>isnt(actual, expected, [message])</code> Tests whether <code>actual</code> is not equal to
+<code>actual</code>. The test uses <code>~=</code> internally.</p></li>
+<li><p><code>same(actual, expected, [message])</code> Tests whether <code>actual</code> is a deep copy
+of <code>expected</code>. Useful for comparing tables.</p></li>
+<li><p><code>same_mt(actual, expected, [message])</code> Tests whether <code>actual</code> is a deep
+copy of <code>expected</code>, using the <code>__eq</code> method in their metatables if such
+a method is found. Useful for comparing tables or objects.</p></li>
+<li><p><code>like(string, pattern, [message])</code> Tests whether <code>string</code> matches the given
+<code>pattern</code>.</p></li>
+<li><p><code>unlike(string, pattern, [message])</code> Tests whether <code>string</code> does not match
+the given <code>pattern</code>.</p></li>
+<li><p><code>pass([message])</code> A test that always passes. Useful as a quasi-skip with a
+message.</p></li>
+<li><p><code>fail([message])</code> A test that always fails. Useful as a quasi-TODO with a
+message.</p></li>
+<li><p><code>boom(function, args, [message])</code> Calls <code>function</code> with <code>args</code> as
+parameters and checks to see if an exception is raised. Passes if an
+exception is raised; fails otherwise. (The exception is swallowed.) The
+<code>args</code> parameter expects a table. The table can be empty but not <code>nil</code>.</p></li>
+</ul>
+
+
+<h2>Helper methods</h2>
+
+<p>Tests will often need to set up the environment or prepare data in various ways.
+In order to make this simpler, two methods are provided to precede and follow
+each test.</p>
+
+<ul>
+<li><p><code>setup</code> Define a global method named <code>setup</code>, and it will be run before each
+test. The method itself can contain as much code as necessary to prepare for
+the following tests.</p></li>
+<li><p><code>teardown</code> Define a global method named <code>teardown</code>, and it will be run after
+each test. The method itself can contain as much code as necessary to clean up
+after each test.</p></li>
+</ul>
+
+
+<p>Please note that <code>setup</code> and <code>teardown</code> must be defined as <strong>global</strong> methods
+within your test file. Otherwise, they will not be called. In addition, you can
+redefine either method as any time in the file to change what <code>setup</code> or
+<code>teardown</code> mean at that point in execution. If you want to stop calling either
+of these methods, simply redefine it as <code>nil</code>. E.g.</p>
+
+<pre><code>local t = require 'tapered'
+
+setup = function ()
+  -- Start up a database. Fill it with test data. Go nuts.
+end
+
+-- Whatever is inside `setup` is done *before* each of the tests below.
+-- For whatever reason, we currently have no `teardown` code, so nothing
+-- is run after these three tests.
+t.is(x, y, msg)
+t.isnt(a,b, msg)
+t.same(obj1, obj2, msg)
+
+setup = function ()
+  -- Redefine setup for later tests.
+end
+
+teardown = function ()
+  -- Define a teardown method now
+end
+
+-- Now whatever is inside `setup` will be done before each test below;
+-- whatever is in `teardown` will be done after each test.
+t.is(p, q, msg)
+t.like(str, pattern, msg)
+
+setup = nil
+-- `setup` will no longer be called, but `teardown` still will.
+-- And so on...
+</code></pre>
+
+<p>In addition, a method is available to show how many tests were run. (This output
+is required for <a href="http://testanything.org/tap-specification.html">TAP compliance</a>, which may matter in some cases.)</p>
+
+<ul>
+<li><code>done([number])</code> Call this function (optionally) at the end of your test file.
+It will print out a line in the form <code>1..n</code> where <code>n</code> is the total number
+of tests run. This secures TAP compliance when needed. The call to <code>done</code>
+is not otherwise required. If you don&rsquo;t care about TAP compliance, neither does
+the library. If you pass the optional parameter to the method, it will check
+whether the number of tests you expected matches the number of actual tests.
+Thus, if can function like a traditional <code>plan</code> method. However, this method
+should always be called <em>last</em> in your tap file, unlike <code>plan</code> methods which
+normally start the test file.</li>
+</ul>
+
+
+<h2>Varia</h2>
+
+<p>The module provides four informational fields that return strings. They should
+be self-explanatory and are probably of little use to most people.</p>
+
+<ul>
+<li><p><code>_AUTHOR</code></p></li>
+<li><p><code>_VERSION</code></p></li>
+<li><p><code>_LICENSE</code></p></li>
+<li><p><code>_URL</code></p></li>
+</ul>
+
+
+<h2>Credits</h2>
+
+<p>For the <code>same</code> method I took ideas and code from <a href="https://github.com/stevedonovan/Penlight">Penlight</a>, <a href="https://github.com/mirven/underscore.lua">Underscore</a>
+and <a href="https://github.com/Olivine-Labs/luassert">luassert</a>. I thank all the people who worked on those.</p>
+
+<p>Indirect inspirations include <a href="https://github.com/chneukirchen/knock">knock</a>, <a href="http://search.cpan.org/perldoc?Test::More">Test::More</a>, and <a href="https://github.com/sstephenson/bats">bats</a>—not so
+much for code as for ideas about testing and simplicity.</p>
+
+<p>All the mistakes are mine. See <a href="changes.html">version history</a> for release details.</p>
+
+<hr />
+
+<p>&copy; 2012-2015 Peter Aronoff. BSD 3-Clause license; see <a href="license.html">LICENSE.md</a> for
+details.</p>
+</body>
+</html>
