@@ -1,0 +1,4 @@
+# I'm a little teapot.
+ok 1 - Short and stout.
+# Here is my handle, and here is my spout.
+1..1

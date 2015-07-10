@@ -1,0 +1,10 @@
+# I'm a little teapot.
+ok 1 - setup() only with '# I'm a little teapot.'
+# This is my handle and this is my spout.
+ok 2 - setup() handle and spout, teardown() cleanup on aisle 9
+# Cleanup on aisle 9!
+# This is my handle and this is my spout.
+ok 3 - setup() again handle and spout, teardown() changed
+# I changed this.
+ok 4 - Both setup and teardown should be gone now: redefined as nil.
+1..4

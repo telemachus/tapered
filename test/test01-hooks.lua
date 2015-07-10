@@ -1,6 +1,6 @@
 #!/usr/bin/env lua
 package.path = '../src/?.lua;' .. package.path
-tap = require 'tap'
+tap = require 'tapered'
 
 function setup()
   print("# I'm a little teapot.")

@@ -1,0 +1,50 @@
+ok 1 - Test ok on true
+not ok 2 - Test ok on false
+# Trouble in ./test03-allfuncs.lua around line 10
+ok 3 - Test nok on false
+not ok 4 - Test nok on true
+# Trouble in ./test03-allfuncs.lua around line 12
+ok 5 - Test is on 2 + 1 = 3
+not ok 6 - Test is on 2 + 2 = 3
+# Trouble in ./test03-allfuncs.lua around line 18
+ok 7 - Test isnt on 2 + 2 = 3
+not ok 8 - Test isnt on 2 + 2 = 4
+# Trouble in ./test03-allfuncs.lua around line 20
+ok 9 - Test same on two empty tables
+ok 10 - Test same on two identical, simple tables
+not ok 11 - Test same on two simple non-identical tables
+# Trouble in ./test03-allfuncs.lua around line 37
+ok 12 - Test same on two identical, nested tables
+ok 13 - Test same on identical, array-like tables
+not ok 14 - Test same on two non-identical, array-like tables
+# Trouble in ./test03-allfuncs.lua around line 44
+ok 15 - Test same on two identical, hash-like tables
+not ok 16 - Test same on two non-identical, hash-like tables
+# Trouble in ./test03-allfuncs.lua around line 66
+ok 17 - Test same on two identical tables with functions as values
+not ok 18 - Test same on two non-identical tables with functions as values
+# Trouble in ./test03-allfuncs.lua around line 75
+ok 19 - Test same on two non-identical tables that share a .__eq
+ok 20 - Test same on two identical tables that do not share a .__eq
+not ok 21 - Test same on two non-identical tables—only one has a .__eq
+# Trouble in ./test03-allfuncs.lua around line 90
+ok 22 - Test like with string 'sat' and pattern 'sat'
+not ok 23 - Test like with string 'sat' and pattern 'bbb'
+# Trouble in ./test03-allfuncs.lua around line 96
+ok 24 - Test unlike with string 'sat' and pattern 'q'
+not ok 25 - Test unlike with string 'q' and pattern 'q'
+# Trouble in ./test03-allfuncs.lua around line 98
+ok 26 - Test like with string '  sat' and pattern '%s+sat'
+ok 27 - Test like with string '934' and pattern '%d%d%d'
+ok 28 - Test like with string '934' and pattern '%d%d'
+ok 29 - Test unlike with string '934' and pattern '%d%s'
+ok 30 - No test: just pass
+not ok 31 - No test: just fail
+# Trouble in ./test03-allfuncs.lua around line 110
+not ok 32 - Test boom with a method that throws no exception
+# Trouble in ./test03-allfuncs.lua around line 121
+ok 33 - Test boom with a method that throws an exception "Kaboom!"
+# Got this error:
+# Kaboom!
+1..33
+# Bad plan. You planned 43 tests but ran 33
