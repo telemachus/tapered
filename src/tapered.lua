@@ -5,7 +5,8 @@ local slice = string.sub
 local sprintf = string.format
 local str_find = string.find
 local tonumber = tonumber
-local unpack = unpack
+-- Lua 5.3 moved unpack to table.unpack
+local unpack = unpack or table.unpack
 local write = io.write
 local getmetable = getmetatable
 
@@ -68,7 +69,12 @@ same = function (t1, t2)
     -- The return value of x == y can be order-dependent in Lua.
     -- https://gist.github.com/telemachus/5412ec98e68ff745d160
     -- Depending on the objects being compared, this may take a long time.
-    return t1 == t2 and t2 == t1
+    -- Lua 5.3 seems to handle == differently than 5.2
+    if _VERSION == 'Lua 5.3' then
+      return (mt1 and mt1.__eq) and (mt2 and mt2.__eq) and t1 == t2 and t2 == t1
+    else
+      return t1 == t2 and t2 == t1
+    end
   elseif (mt1 or mt2) and (not key_value_compare(mt1, mt2)) then
     return false  
   else
