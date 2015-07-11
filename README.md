@@ -132,6 +132,9 @@ and [luassert][l]. I thank all the people who worked on those.
 Indirect inspirations include [knock][k], [Test::More][tm], and [bats][b]—not so
 much for code as for ideas about testing and simplicity.
 
+Thanks in particular to [Pierre Chapuis][pchapuis] for help with ideas and
+getting TravisCI going with the repository.
+
 All the mistakes are mine. See [version history][c] for release details.
 
 [p]: https://github.com/stevedonovan/Penlight
@@ -141,6 +144,7 @@ All the mistakes are mine. See [version history][c] for release details.
 [tm]: http://search.cpan.org/perldoc?Test::More
 [b]: https://github.com/sstephenson/bats
 [c]: /CHANGES.md
+[pchapuis]: https://twitter.com/pchapuis
 
 ---
 
