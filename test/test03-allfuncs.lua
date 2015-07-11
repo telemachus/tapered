@@ -1,6 +1,5 @@
-#!/usr/bin/env lua
 package.path = '../src/?.lua;' .. package.path
-tap = require 'tapered'
+local tap = require 'tapered'
 local error = error
 
 --- ok and nok
@@ -77,17 +76,20 @@ tap.same(method_table1, method_table3,
 local foo = {4}
 local bar = {5}
 local bizz = {4}
-local buzz = {5}
-local mt = {}
-local function always_true()
-  return true
-end
-mt.__eq = always_true
-setmetatable(foo, mt)
-setmetatable(bar, mt)
-tap.same(foo, bar, 'Test same on two non-identical tables that share a .__eq')
-tap.same(foo, bizz, 'Test same on two identical tables that do not share a .__eq')
-tap.same(foo, buzz, 'Test same on two non-identical tables—only one has a .__eq')
+local buzz = {4}
+local mt1, mt2 = {}, {}
+local always_true = function () return true end
+local always_false = function () return false end
+mt1.__eq = always_true
+mt2.__eq = always_false
+setmetatable(foo, mt1)
+setmetatable(bar, mt1)
+setmetatable(bizz, mt2)
+tap.same(foo, bar, 'Test same on two dissimilar tables that share .__eq => true')
+tap.same(foo, bizz, 'Test same: first table .__eq => true, second => false')
+tap.same(foo, bizz, 'Test same: first table .__eq => false, second => true')
+tap.same(foo, buzz, 'Test same on two similar tables where first .__eq => true')
+tap.same(buzz, foo, 'Test same on two similar tables where second .__eq => true')
 
 --- like and unlike
 -- like(string, pattern, [msg]) tests if the pattern matches the string

@@ -7,6 +7,7 @@ local str_find = string.find
 local tonumber = tonumber
 local unpack = unpack
 local write = io.write
+local getmetable = getmetatable
 
 ---- Helper methods
 
@@ -15,16 +16,38 @@ local printf = function(fmt, ...)
   write(sprintf(fmt, ...))
 end
 
---- Two methods to compare potentially complex tables or objects
+--- Compare potentially complex tables or objects
 --
--- Ideas here are taken from [Penlight][p], [Underscore][u] and
--- [luassert][l]. Very little is my own, though I've tweaked things a bit.
+-- Ideas here are taken from [Penlight][p], [Underscore][u], [cwtest][cw], and
+-- [luassert][l].
 -- [p]: https://github.com/stevedonovan/Penlight
 -- [u]: https://github.com/mirven/underscore.lua
+-- [cw]: https://github.com/catwell/cwtest
 -- [l]: https://github.com/Olivine-Labs/luassert
-
---- Compare two items without concern for metatables.
+--
+-- Predeclare both function names
+local key_value_compare
 local same
+--
+-- Helper method to compare all the keys and values of a table
+key_value_compare = function (t1, t2)
+  for k1, v1 in pairs(t1) do
+    local v2 = t2[k1]
+    if v2 == nil or not same(v1, v2) then
+      return false
+    end
+  end
+
+  for k2, _ in pairs(t2) do
+    if t1[k2] == nil then
+      return false
+    end
+  end
+
+  return true
+end
+--
+-- Compare two items of any time for identity
 same = function (t1, t2)
   -- If the types aren't the same, return false.
   local ty1 = type(t1)
@@ -39,34 +62,18 @@ same = function (t1, t2)
   end
 
   -- If ._eq is found, use == and end quickly.
-  -- + Both tables must have a metatable.
-  -- + Both metatables must refer to the same table.
-  -- + The metatables must define a method __eq.
-  local mt1 = getmetatable(t1)
-  local mt2 = getmetatable(t2)
-  if mt1 and mt1 == mt2 and mt1.__eq then
-    return t1 == t2
+  local mt1 = getmetable(t1)
+  local mt2 = getmetable(t2)
+  if (mt1 and mt1.__eq) or (mt2 and mt2.__eq) then
+    -- The return value of x == y can be order-dependent in Lua.
+    -- https://gist.github.com/telemachus/5412ec98e68ff745d160
+    -- Depending on the objects being compared, this may take a long time.
+    return t1 == t2 and t2 == t1
+  elseif (mt1 or mt2) and (not key_value_compare(mt1, mt2)) then
+    return false  
+  else
+    return key_value_compare(t1, t2)
   end
-
-  -- Loop over keys and values from t1. If t2 lacks a key from
-  -- t1, return false. Otherwise, recur down the values.
-  for k1, v1 in pairs(t1) do
-    local v2 = t2[k1]
-    if v2 == nil or not same(v1, v2) then
-      return false
-    end
-  end
-
-  -- Finally, check to make sure that t2 doesn't have any keys that
-  -- t1 lacks. If we hit such a situation, we return false immediately.
-  for k2, _ in pairs(t2) do
-    if t1[k2] == nil then
-      return false
-    end
-  end
-
-  -- If we get this far, the two items must be equal.
-  return true
 end
 
 local test_count = 0
