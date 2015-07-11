@@ -14,7 +14,7 @@ branches:
     - master
 
 install:
-  - bash .travis/setup_lua.sh
+  - source .travis/setenv_lua.sh
 
 before_script:
   - sudo add-apt-repository ppa:duggan/bats --yes
