@@ -16,7 +16,7 @@ LUA_HOME_DIR=$CI_BUILD_DIR/install/lua
 
 LR_HOME_DIR=$CI_BUILD_DIR/install/luarocks
 
-mkdir $HOME/.lua
+mkdir -p $HOME/.lua
 
 LUAJIT="no"
 
