@@ -1,0 +1,30 @@
+language: ruby
+
+env:
+  global:
+    - LUAROCKS=2.2.0
+  matrix:
+    - LUA=lua5.1
+    - LUA=lua5.2
+    - LUA=lua5.3
+    - LUA=luajit
+
+branches:
+  only:
+    - master
+
+install:
+  - source .travis/setenv_lua.sh
+
+before_script:
+  - sudo add-apt-repository ppa:duggan/bats --yes
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq bats
+  - cd test
+script:
+  - bats runner.bash
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
