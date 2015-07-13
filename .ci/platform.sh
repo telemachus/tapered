@@ -1,5 +1,5 @@
 if [ -z "${PLATFORM:-}" ]; then
-  PLATFORM=$CI_OS_NAME;
+  PLATFORM="${CI_OS_NAME:-}";
 fi
 
 if [ "$PLATFORM" == "osx" ]; then
