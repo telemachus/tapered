@@ -1,0 +1,7 @@
+ok 1 - ok - return nada.__eq
+# Got this error: "boom-test.lua:13: attempt to index local 'x' (a nil value)"
+not ok 2 - not ok - Test boom with a method that throws no exception
+# Trouble in boom-test.lua around line 16
+ok 3 - ok - Test boom with a method that throws an exception "Kaboom!"
+# Got this error: "Kaboom!"
+1..3

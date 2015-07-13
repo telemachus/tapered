@@ -1,0 +1,13 @@
+ok 1 - ok - like('sat', 'sat')
+not ok 2 - not ok - like('sat', 'bbb')
+# Trouble in like-unlike-test.lua around line 9
+ok 3 - ok - unlike('sat', 'q')
+not ok 4 - not ok - unlike('q', 'q')
+# Trouble in like-unlike-test.lua around line 11
+ok 5 - ok - like('   sat', '%s+sat')
+ok 6 - ok - like('934', '%d%d%d')
+ok 7 - ok - like('934', '%d%d')
+not ok 8 - not ok - like('934', '%d%s')
+# Trouble in like-unlike-test.lua around line 15
+ok 9 - ok - unlike('934', '%d%s')
+1..9

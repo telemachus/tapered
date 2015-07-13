@@ -1,0 +1,31 @@
+ok 1 - ok - same({}, {}
+ok 2 - ok - same({1,2,3}, {1,2,3})
+not ok 3 - not ok - same({1}, {})
+# Trouble in same-test.lua around line 7
+ok 4 - ok - same({{1}, 2, {3,4}}, {{1}, 2, {3,4})
+ok 5 - ok - same({"Monday", "Tuesday"}, {"Monday", "Tuesday"})
+not ok 6 - not ok - same({"Monday", "Tuesday"}, {"Monday", "Tuesday", "Wednesday"})
+# Trouble in same-test.lua around line 15
+ok 7 - ok - same({Monday = 1}, {Monday = 1})
+not ok 8 - not ok - same({Monday = 1}, {Monday = 1, Tuesday = 2})
+# Trouble in same-test.lua around line 29
+ok 9 - ok - same({m = {1,2}, n = {1,2}}, {m = {1,2}, n = {1,2}})
+not ok 10 - not ok - same({m = {1,2}, n = {1,2}}, {m = {1,2}, n = {1,2,3}})
+# Trouble in same-test.lua around line 36
+not ok 11 - not ok - same({m = {1,2}, n = {1,2,3}}, {m = {1,2}, n = {1,2}})
+# Trouble in same-test.lua around line 37
+ok 12 - ok - same({p = print, e = exit}, {p = print, e = exit})
+not ok 13 - not ok - same({p = print, e = exit}, {p = print, e = exit, u = unpack})
+# Trouble in same-test.lua around line 44
+ok 14 - ok - same({4, s=4}, {6, s=4},__eq => x[s] and y[s] are even)
+ok 15 - ok - same({6, s=8}, {4, s=4},__eq => x[s] and y[s] are even)
+not ok 16 - not ok - same({4, s=4}, {4, s=3},__eq => x[s] and y[s] are even)
+# Trouble in same-test.lua around line 61
+not ok 17 - not ok - same({4, s=4}, {4, s=3},__eq => x[s] and y[s] are even)
+# Trouble in same-test.lua around line 63
+not ok 18 - not ok - same({4, s=4}, {6, s=4},__eq => x[s] is even, y[s] odd)
+# Trouble in same-test.lua around line 68
+ok 19 - ok - same({4, s=4}, {4, s=3},__eq => x[s] is even, y[s] odd)
+not ok 20 - not ok - same({4, s=3}, {4, s=4},__eq => x[s] is even, y[s] odd)
+# Trouble in same-test.lua around line 72
+1..20
