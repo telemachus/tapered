@@ -1,4 +1,4 @@
 ok 1 - _AUTHOR should be Peter Aronoff
-ok 2 - _VERSION should be 1.0-0
+ok 2 - _VERSION should be 1.1-0
 ok 3 - _LICENSE should be BSD 3-Clause
 ok 4 - _URL should be https://bitbucket.org/telemachus/tapered
