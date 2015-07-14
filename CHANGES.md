@@ -16,6 +16,15 @@
 + Meaningful exit statuses via `done`
 + Add CI via [drone.io][dio]
 
+## *1.2.0-1* (July 19, 2015)
+
++ Clean up code using luacheck and luacov
++ Small tweaks to README and CHANGES
++ Fix version number: the previous two digit number was a mistake, based on
+  a misunderstanding of LuaRocks conventions. This is an annoying switch, but
+  better now than later. And better to do it than to live with a versioning
+  pattern I dislike.
+
 Would you reather view the [documentation][d]?
 
 [d]: /README.md

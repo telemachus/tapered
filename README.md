@@ -1,4 +1,4 @@
-# tapered  [![Build Status](https://drone.io/bitbucket.org/telemachus/tapered/status.png)](https://drone.io/bitbucket.org/telemachus/tapered/latest)
+# tapered  [![Build Status](https://drone.io/bitbucket.org/telemachus/tapered/status.png)](https://drone.io/bitbucket.org/telemachus/tapered/latest) [![Coverage Status](https://coveralls.io/repos/telemachus/tapered/badge.svg?branch=master&service=bitbucket)](https://coveralls.io/bitbucket/telemachus/tapered?branch=master)
 
 ## Synopsis
 
@@ -113,7 +113,9 @@ is required for [TAP compliance][tap], which may matter in some cases.)
   failure via their exit status. After `done` is called, the script will exit
   with a status of 0, indicating success, if all tests passed. If some tests
   failed, the script will exit with a status equal to the number of failed
-  tests, indicating failure.
+  tests, indicating failure. A script will also exit with an error status if
+  there is a mismatch between the actual number of tests run and the number
+  passed to `done` as a parameter.
 
 ## Varia
 
@@ -130,8 +132,8 @@ be self-explanatory and are probably of little use to most people.
 
 ## Credits
 
-For the `same` method I took ideas and code from [Penlight][p], [Underscore][u]
-and [luassert][l], and [cwtest][cw]. I thank all the people who worked on those.
+For the `same` method I took ideas and code from [Penlight][p], [Underscore][u],
+[luassert][l], and [cwtest][cw]. I thank all the people who worked on those.
 
 Indirect inspirations include [knock][k], [Test::More][tm], and [bats][b]—not so
 much for code as for ideas about testing and simplicity.

@@ -1,2 +1,0 @@
-ok 1 - This is not really the point of today's exercise.
-1..1

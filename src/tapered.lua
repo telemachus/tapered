@@ -9,7 +9,7 @@ local tonumber = tonumber
 local unpack = unpack or table.unpack
 local write = io.write
 local rawget = rawget
-local getmetable = getmetatable
+local getmetatable = getmetatable
 local exit = os.exit
 
 ---- Helper methods
@@ -99,7 +99,7 @@ local _test = function (exp, msg)
   else
     exit_status = 1 + exit_status
     printf("not ok %s%s\n", test_count, msg)
-    info = get_info(debug_level)
+    local info = get_info(debug_level)
     printf("# Trouble in %s around line %s\n",
            slice(info.source, 2), info.currentline)
   end
@@ -157,6 +157,7 @@ local done = function (n)
   if not expected or test_count == expected then
     printf('1..%d\n', test_count)
   elseif expected ~= test_count then
+    exit_status = 1 + exit_status
     local s
     if expected == 1 then s = '' else s = 's' end
     printf("# Bad plan. You planned %d test%s but ran %d\n",
