@@ -30,10 +30,8 @@ value.</p></li>
 <li><p><code>isnt(actual, expected, [message])</code> Tests whether <code>actual</code> is not equal to
 <code>actual</code>. The test uses <code>~=</code> internally.</p></li>
 <li><p><code>same(actual, expected, [message])</code> Tests whether <code>actual</code> is a deep copy
-of <code>expected</code>. Useful for comparing tables.</p></li>
-<li><p><code>same_mt(actual, expected, [message])</code> Tests whether <code>actual</code> is a deep
-copy of <code>expected</code>, using the <code>__eq</code> method in their metatables if such
-a method is found. Useful for comparing tables or objects.</p></li>
+of <code>expected</code>. The test uses an <code>__eq</code> metamethod if one is found. Useful
+for comparing tables.</p></li>
 <li><p><code>like(string, pattern, [message])</code> Tests whether <code>string</code> matches the given
 <code>pattern</code>.</p></li>
 <li><p><code>unlike(string, pattern, [message])</code> Tests whether <code>string</code> does not match
@@ -106,7 +104,7 @@ setup = nil
 is required for <a href="http://testanything.org/tap-specification.html">TAP compliance</a>, which may matter in some cases.)</p>
 
 <ul>
-<li><code>done([number])</code> Call this function (optionally) at the end of your test file.
+<li><p><code>done([number])</code> Call this function (optionally) at the end of your test file.
 It will print out a line in the form <code>1..n</code> where <code>n</code> is the total number
 of tests run. This secures TAP compliance when needed. The call to <code>done</code>
 is not otherwise required. If you don&rsquo;t care about TAP compliance, neither does
@@ -114,7 +112,14 @@ the library. If you pass the optional parameter to the method, it will check
 whether the number of tests you expected matches the number of actual tests.
 Thus, if can function like a traditional <code>plan</code> method. However, this method
 should always be called <em>last</em> in your tap file, unlike <code>plan</code> methods which
-normally start the test file.</li>
+normally start the test file.</p>
+
+<p>Another reason to use <code>done</code> is if you care about the exit status of the
+tests. Many continuous integration tools rely on tests signalling success or
+failure via their exit status. After <code>done</code> is called, the script will exit
+with a status of 0, indicating success, if all tests passed. If some tests
+failed, the script will exit with a status equal to the number of failed
+tests, indicating failure.</p></li>
 </ul>
 
 
@@ -134,13 +139,13 @@ be self-explanatory and are probably of little use to most people.</p>
 <h2>Credits</h2>
 
 <p>For the <code>same</code> method I took ideas and code from <a href="https://github.com/stevedonovan/Penlight">Penlight</a>, <a href="https://github.com/mirven/underscore.lua">Underscore</a>
-and <a href="https://github.com/Olivine-Labs/luassert">luassert</a>. I thank all the people who worked on those.</p>
+and <a href="https://github.com/Olivine-Labs/luassert">luassert</a>, and <a href="https://github.com/catwell/cwtest">cwtest</a>. I thank all the people who worked on those.</p>
 
 <p>Indirect inspirations include <a href="https://github.com/chneukirchen/knock">knock</a>, <a href="http://search.cpan.org/perldoc?Test::More">Test::More</a>, and <a href="https://github.com/sstephenson/bats">bats</a>—not so
 much for code as for ideas about testing and simplicity.</p>
 
 <p>Thanks in particular to <a href="https://twitter.com/pchapuis">Pierre Chapuis</a> for help with ideas and
-getting TravisCI going with the repository.</p>
+getting continuous integration for tapered.</p>
 
 <p>All the mistakes are mine. See <a href="changes.html">version history</a> for release details.</p>
 

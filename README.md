@@ -23,11 +23,8 @@ program for parsing.
   `actual`. The test uses `~=` internally.
 
 + `same(actual, expected, [message])` Tests whether `actual` is a deep copy
-  of `expected`. Useful for comparing tables.
-
-+ `same_mt(actual, expected, [message])` Tests whether `actual` is a deep
-  copy of `expected`, using the `__eq` method in their metatables if such
-  a method is found. Useful for comparing tables or objects.
+  of `expected`. The test uses an `__eq` metamethod if one is found. Useful
+  for comparing tables.
 
 + `like(string, pattern, [message])` Tests whether `string` matches the given
   `pattern`.
@@ -111,6 +108,13 @@ is required for [TAP compliance][tap], which may matter in some cases.)
   should always be called *last* in your tap file, unlike `plan` methods which
   normally start the test file.
 
+  Another reason to use `done` is if you care about the exit status of the
+  tests. Many continuous integration tools rely on tests signalling success or
+  failure via their exit status. After `done` is called, the script will exit
+  with a status of 0, indicating success, if all tests passed. If some tests
+  failed, the script will exit with a status equal to the number of failed
+  tests, indicating failure.
+
 ## Varia
 
 The module provides four informational fields that return strings. They should
@@ -127,19 +131,20 @@ be self-explanatory and are probably of little use to most people.
 ## Credits
 
 For the `same` method I took ideas and code from [Penlight][p], [Underscore][u]
-and [luassert][l]. I thank all the people who worked on those.
+and [luassert][l], and [cwtest][cw]. I thank all the people who worked on those.
 
 Indirect inspirations include [knock][k], [Test::More][tm], and [bats][b]—not so
 much for code as for ideas about testing and simplicity.
 
 Thanks in particular to [Pierre Chapuis][pchapuis] for help with ideas and
-getting TravisCI going with the repository.
+getting continuous integration for tapered.
 
 All the mistakes are mine. See [version history][c] for release details.
 
 [p]: https://github.com/stevedonovan/Penlight
 [u]: https://github.com/mirven/underscore.lua
 [l]: https://github.com/Olivine-Labs/luassert
+[cw]: https://github.com/catwell/cwtest
 [k]: https://github.com/chneukirchen/knock
 [tm]: http://search.cpan.org/perldoc?Test::More
 [b]: https://github.com/sstephenson/bats
