@@ -1,4 +1,4 @@
-# tapered  ![Build Status](https://drone.io/bitbucket.org/telemachus/tapered/status.png)
+# tapered  [![Build Status](https://drone.io/bitbucket.org/telemachus/tapered/status.png)](https://drone.io/bitbucket.org/telemachus/tapered/latest)
 
 ## Synopsis
 

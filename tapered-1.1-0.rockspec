@@ -1,7 +1,7 @@
 package = 'tapered'
-version = '1.0-1'
+version = '1.1-0'
 source = {
-    url = 'https://bitbucket.org/telemachus/tapered/downloads/tapered-v1.0-1.tar.gz',
+    url = 'https://bitbucket.org/telemachus/tapered/downloads/tapered-v1.1-0.tar.gz',
     dir = 'tapered',
 }
 description = {
