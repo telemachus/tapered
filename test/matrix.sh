@@ -10,4 +10,6 @@ do
 	bats runner.bash ;
 	[ $? -eq 0 ] || exit $? ;
 done
-luacov-coveralls -t "$COVERALLS_REPO_TOKEN"
+luacov
+cat luacov.report.out
+bash <(curl -s https://codecov.io/bash)
