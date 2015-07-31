@@ -1,4 +1,4 @@
-# tapered  [![Build Status](https://drone.io/bitbucket.org/telemachus/tapered/status.png)](https://drone.io/bitbucket.org/telemachus/tapered/latest) [![Coverage Status](https://coveralls.io/repos/telemachus/tapered/badge.svg?branch=master&service=bitbucket)](https://coveralls.io/bitbucket/telemachus/tapered?branch=master)
+# tapered  [![Build Status](https://drone.io/bitbucket.org/telemachus/tapered/status.png)](https://drone.io/bitbucket.org/telemachus/tapered/latest) [![codecov.io](http://codecov.io/bitbucket/telemachus/tapered/coverage.svg?branch=master)](http://codecov.io/bitbucket/telemachus/tapered?branch=master)
 
 ## Synopsis
 

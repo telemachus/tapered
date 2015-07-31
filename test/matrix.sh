@@ -11,5 +11,4 @@ do
 	[ $? -eq 0 ] || exit $? ;
 done
 luacov
-cat luacov.report.out
 bash <(curl -s https://codecov.io/bash)
