@@ -25,6 +25,14 @@
   better now than later. And better to do it than to live with a versioning
   pattern I dislike.
 
+## *1.2.1-1* (December 5, 2015)
+
++ Test coverage stats are now thanks to [codecov][codecov].
++ Latest stable Lua in the 5.3 series is 5.3.2, so we test against that now.
+
+[codecov]: https://codecov.io
+
+
 Would you reather view the [documentation][d]?
 
 [d]: /README.md
