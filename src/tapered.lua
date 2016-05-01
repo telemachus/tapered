@@ -166,6 +166,22 @@ local done = function (n)
   exit(exit_status)
 end
 
+local version = function ()
+  return "2.0.0-1"
+end
+
+local author = function ()
+  return "Peter Aronoff"
+end
+
+local url = function ()
+  return "https://bitbucket.org/telemachus/tapered"
+end
+
+local license = function ()
+  return "BSD 3-Clause"
+end
+
 return {
   ok = ok,
   nok = nok,
@@ -178,8 +194,8 @@ return {
   fail = fail,
   boom = boom,
   done = done,
-  _VERSION = '1.1-0',
-  _AUTHOR = 'Peter Aronoff',
-  _URL = 'https://bitbucket.org/telemachus/tapered',
-  _LICENSE = 'BSD 3-Clause'
+  version = version,
+  author = author,
+  url = url,
+  license = license
 }

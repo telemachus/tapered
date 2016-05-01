@@ -6,8 +6,7 @@ do
 	LUA="$lua" source "$LUA_ENV/setenv_lua.sh" ;
 	lua -v ;
 	luarocks install luacov
-	luarocks install luacov-coveralls
-	bats runner.bash ;
+	./bats/bin/bats runner.bash ;
 	[ $? -eq 0 ] || exit $? ;
 done
 luacov
