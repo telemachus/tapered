@@ -119,16 +119,16 @@ is required for [TAP compliance][tap], which may matter in some cases.)
 
 ## Varia
 
-The module provides four informational fields that return strings. They should
-be self-explanatory and are probably of little use to most people.
+The module provides four informational functions that return strings. They
+should be self-explanatory.
 
-+ `_AUTHOR`
++ `version() -- 2.0.0-1`
 
-+ `_VERSION`
++ `author() -- Peter Aronoff`
 
-+ `_LICENSE`
++ `url() -- https://bitbucket.org/telemachus/tapered`
 
-+ `_URL`
++ `license() -- BSD 3-Clause`
 
 ## Credits
 
@@ -155,7 +155,7 @@ All the mistakes are mine. See [version history][c] for release details.
 
 ---
 
-(c) 2012-2015 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][li] for
+(c) 2012-2016 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][li] for
 details.
 
 [li]: /LICENSE.md
