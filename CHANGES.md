@@ -36,7 +36,12 @@
 
 + The informational fields are now functions that return strings. This is to prevent them from violating Lua recommendations about variables such as `_VERSION`. (I've bumped the major version number since this is technically an API change, though for most users it will not require any changes on their end.)
 
-Would you reather view the [documentation][d]?
+## *2.0.1-1* (May 2, 2016)
+
++ Fix a typo in the documentation.
++ Adjust the `version()` return value to show only software version, not the rockspec version as well.
+
+Would you rather view the [documentation][d]?
 
 [d]: /README.md
 [dio]: https://drone.io/bitbucket.org/telemachus/tapered/latest

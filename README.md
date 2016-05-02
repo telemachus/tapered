@@ -122,7 +122,7 @@ is required for [TAP compliance][tap], which may matter in some cases.)
 The module provides four informational functions that return strings. They
 should be self-explanatory.
 
-+ `version() -- 2.0.0-1`
++ `version() -- 2.0.1`
 
 + `author() -- Peter Aronoff`
 

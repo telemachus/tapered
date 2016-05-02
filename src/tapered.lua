@@ -167,7 +167,7 @@ local done = function (n)
 end
 
 local version = function ()
-  return "2.0.0-1"
+  return "2.0.1"
 end
 
 local author = function ()
