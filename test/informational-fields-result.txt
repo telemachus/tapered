@@ -1,4 +1,4 @@
 ok 1 - author() should be 'Peter Aronoff'
-ok 2 - version() should be '2.0.1'
+ok 2 - version() should be '2.1.0'
 ok 3 - license() should be 'BSD 3-Clause'
 ok 4 - url() should be 'https://bitbucket.org/telemachus/tapered'

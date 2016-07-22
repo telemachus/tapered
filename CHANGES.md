@@ -41,6 +41,10 @@
 + Fix a typo in the documentation.
 + Adjust the `version()` return value to show only software version, not the rockspec version as well.
 
+## *2.1.0-1* (July 21, 2016)
+
++ Update to test against Lua 5.3.3
+
 Would you rather view the [documentation][d]?
 
 [d]: /README.md
