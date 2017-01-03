@@ -51,7 +51,7 @@ Would you rather view the [documentation][d]?
 [dio]: https://drone.io/bitbucket.org/telemachus/tapered/latest
 ---
 
-(c) 2012-2016 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][l] for
+(c) 2012-2017 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][l] for
 details.
 
 [l]: /LICENSE.md
