@@ -1,4 +1,4 @@
-# tapered  [![Build Status](https://drone.io/bitbucket.org/telemachus/tapered/status.png)](https://drone.io/bitbucket.org/telemachus/tapered/latest) [![codecov.io](http://codecov.io/bitbucket/telemachus/tapered/coverage.svg?branch=master)](http://codecov.io/bitbucket/telemachus/tapered?branch=master)
+# tapered [![Build Status](https://travis-ci.org/telemachus/tapered.svg?branch=master)](https://travis-ci.org/telemachus/tapered) [![Coverage](https://codecov.io/gh/telemachus/tapered/branch/master/graph/badge.svg)](https://codecov.io/gh/telemachus/tapered)
 
 ## Synopsis
 
@@ -122,11 +122,11 @@ is required for [TAP compliance][tap], which may matter in some cases.)
 The module provides four informational functions that return strings. They
 should be self-explanatory.
 
-+ `version() -- 2.1.0`
++ `version() -- 2.2.0`
 
 + `author() -- Peter Aronoff`
 
-+ `url() -- https://bitbucket.org/telemachus/tapered`
++ `url() -- https://github.com/telemachus/tapered.git`
 
 + `license() -- BSD 3-Clause`
 

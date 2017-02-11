@@ -167,7 +167,7 @@ local done = function (n)
 end
 
 local version = function ()
-  return "2.1.0"
+  return "2.2.0"
 end
 
 local author = function ()
@@ -175,7 +175,7 @@ local author = function ()
 end
 
 local url = function ()
-  return "https://bitbucket.org/telemachus/tapered"
+  return "https://github.com/telemachus/tapered"
 end
 
 local license = function ()
