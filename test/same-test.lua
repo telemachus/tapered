@@ -1,6 +1,6 @@
 package.path = '../src/?.lua;' .. package.path
 local tap = require 'tapered'
-local error = error
+-- luacheck: compat
 
 tap.same({},{}, 'ok - same({}, {}')
 tap.same({1,2,3}, {1,2,3}, 'ok - same({1,2,3}, {1,2,3})')
@@ -36,13 +36,13 @@ tap.same(n1, n2, 'ok - same({m = {1,2}, n = {1,2}}, {m = {1,2}, n = {1,2}})')
 tap.same(n1, n3, 'not ok - same({m = {1,2}, n = {1,2}}, {m = {1,2}, n = {1,2,3}})')
 tap.same(n3, n1, 'not ok - same({m = {1,2}, n = {1,2,3}}, {m = {1,2}, n = {1,2}})')
 
-local method_table1 = { p = print, e = exit }
-local method_table2 = { p = print, e = exit }
-local method_table3 = { p = print, e = exit, u = unpack or table.unpack }
+local method_table1 = { p = print, a = assert }
+local method_table2 = { p = print, a = assert }
+local method_table3 = { p = print, a = assert, e = error }
 tap.same(method_table1, method_table2,
-	'ok - same({p = print, e = exit}, {p = print, e = exit})')
+	'ok - same({p = print, a = assert}, {p = print, a = assert})')
 tap.same(method_table1, method_table3,
-	'not ok - same({p = print, e = exit}, {p = print, e = exit, u = unpack})')
+	'not ok - same({p = print, a = assert}, {p = print, a = assert, e = error})')
 
 local foo = {4, s = 4}
 local bar = {6, s = 8}

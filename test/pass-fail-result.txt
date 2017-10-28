@@ -1,4 +1,4 @@
 ok 1 - ok - No test: just pass
 not ok 2 - not ok - No test: just fail
-# Trouble in pass-fail-test.lua around line 11
+# Trouble in pass-fail-test.lua around line 10
 1..2

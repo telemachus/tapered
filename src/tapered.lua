@@ -73,14 +73,6 @@ local exit_status = 0
 local test_count = 0
 local debug_level = 3
 
-local setup_call = function ()
-  if _G["setup"] then return _G["setup"]() end
-end
-
-local teardown_call = function ()
-  if _G["teardown"] then return _G["teardown"]() end
-end
-
 -- All other tests are defined in terms of this primitive, which is
 -- kept private.
 local _test = function (exp, msg)
@@ -92,8 +84,6 @@ local _test = function (exp, msg)
     msg = ''
   end
 
-  setup_call()
-
   if exp then
     printf("ok %s%s\n", test_count, msg)
   else
@@ -103,8 +93,6 @@ local _test = function (exp, msg)
     printf("# Trouble in %s around line %s\n",
            slice(info.source, 2), info.currentline)
   end
-
-  teardown_call()
 end
 
 local ok = function (expression, msg)
@@ -167,7 +155,7 @@ local done = function (n)
 end
 
 local version = function ()
-  return "2.2.0"
+  return "2.3.0"
 end
 
 local author = function ()

@@ -1,6 +1,5 @@
 package.path = '../src/?.lua;' .. package.path
 local tap = require 'tapered'
-local error = error
 
 --- ok and nok
 -- ok(exp, [msg]) tests if exp returns (or is) a truthy value.

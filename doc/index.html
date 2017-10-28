@@ -47,60 +47,9 @@ exception is raised; fails otherwise. (The exception is swallowed.) The
 </ul>
 
 
-<h2>Helper methods</h2>
+<h2>Helper method</h2>
 
-<p>Tests will often need to set up the environment or prepare data in various ways.
-In order to make this simpler, two methods are provided to precede and follow
-each test.</p>
-
-<ul>
-<li><p><code>setup</code> Define a global method named <code>setup</code>, and it will be run before each
-test. The method itself can contain as much code as necessary to prepare for
-the following tests.</p></li>
-<li><p><code>teardown</code> Define a global method named <code>teardown</code>, and it will be run after
-each test. The method itself can contain as much code as necessary to clean up
-after each test.</p></li>
-</ul>
-
-
-<p>Please note that <code>setup</code> and <code>teardown</code> must be defined as <strong>global</strong> methods
-within your test file. Otherwise, they will not be called. In addition, you can
-redefine either method as any time in the file to change what <code>setup</code> or
-<code>teardown</code> mean at that point in execution. If you want to stop calling either
-of these methods, simply redefine it as <code>nil</code>. E.g.</p>
-
-<pre><code>local t = require 'tapered'
-
-setup = function ()
-  -- Start up a database. Fill it with test data. Go nuts.
-end
-
--- Whatever is inside `setup` is done *before* each of the tests below.
--- For whatever reason, we currently have no `teardown` code, so nothing
--- is run after these three tests.
-t.is(x, y, msg)
-t.isnt(a,b, msg)
-t.same(obj1, obj2, msg)
-
-setup = function ()
-  -- Redefine setup for later tests.
-end
-
-teardown = function ()
-  -- Define a teardown method now
-end
-
--- Now whatever is inside `setup` will be done before each test below;
--- whatever is in `teardown` will be done after each test.
-t.is(p, q, msg)
-t.like(str, pattern, msg)
-
-setup = nil
--- `setup` will no longer be called, but `teardown` still will.
--- And so on...
-</code></pre>
-
-<p>In addition, a method is available to show how many tests were run. (This output
+<p>A method is available to show how many tests were run. (This output
 is required for <a href="http://testanything.org/tap-specification.html">TAP compliance</a>, which may matter in some cases.)</p>
 
 <ul>
@@ -131,7 +80,7 @@ passed to <code>done</code> as a parameter.</p></li>
 should be self-explanatory.</p>
 
 <ul>
-<li><p><code>version() -- 2.2.0</code></p></li>
+<li><p><code>version() -- 2.3.0</code></p></li>
 <li><p><code>author() -- Peter Aronoff</code></p></li>
 <li><p><code>url() -- https://github.com/telemachus/tapered.git</code></p></li>
 <li><p><code>license() -- BSD 3-Clause</code></p></li>
@@ -148,6 +97,9 @@ much for code as for ideas about testing and simplicity.</p>
 
 <p>Thanks in particular to <a href="https://twitter.com/pchapuis">Pierre Chapuis</a> for help with ideas and
 getting continuous integration for tapered.</p>
+
+<p>An anonymous email showed me that my setup and teardown methods had a logical
+flaw. As a result, I&rsquo;ve removed those methods. I appreciate the report.</p>
 
 <p>All the mistakes are mine. See <a href="changes.html">version history</a> for release details.</p>
 

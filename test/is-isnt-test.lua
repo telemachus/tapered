@@ -1,6 +1,5 @@
 package.path = '../src/?.lua;' .. package.path
 local tap = require 'tapered'
-local error = error
 
 --- is and isnt
 -- is(actual, expected, [msg]) tests if actual == expected
@@ -20,7 +19,7 @@ tap.is(false, true, 'not ok - is(false, true)')
 tap.isnt(2+2, 3, 'ok - isnt(2+2, 3)')
 tap.isnt(2+2, 4, 'not ok - isnt(2+2, 4)')
 tap.isnt(3, print, 'ok - isnt(3, print)')
-tap.isnt(print, exit, 'ok - isnt(print, exit)')
+tap.isnt(print, os.exit, 'ok - isnt(print, os.exit)')
 tap.isnt('hello', 'goodbye', 'ok - isnt("hello", "goodbye")')
 tap.isnt('hello', 'hello', 'not ok - isnt("hello", "hello")')
 tap.isnt(nil, nil, 'not ok - isnt(nil, nil)')

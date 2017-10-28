@@ -1,6 +1,5 @@
 package.path = '../src/?.lua;' .. package.path
 local tap = require 'tapered'
-local error = error
 
 --- like and unlike
 -- like(string, pattern, [msg]) tests if the pattern matches the string

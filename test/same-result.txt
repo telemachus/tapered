@@ -14,8 +14,8 @@ not ok 10 - not ok - same({m = {1,2}, n = {1,2}}, {m = {1,2}, n = {1,2,3}})
 # Trouble in same-test.lua around line 36
 not ok 11 - not ok - same({m = {1,2}, n = {1,2,3}}, {m = {1,2}, n = {1,2}})
 # Trouble in same-test.lua around line 37
-ok 12 - ok - same({p = print, e = exit}, {p = print, e = exit})
-not ok 13 - not ok - same({p = print, e = exit}, {p = print, e = exit, u = unpack})
+ok 12 - ok - same({p = print, a = assert}, {p = print, a = assert})
+not ok 13 - not ok - same({p = print, a = assert}, {p = print, a = assert, e = error})
 # Trouble in same-test.lua around line 44
 ok 14 - ok - same({4, s=4}, {6, s=4},__eq => x[s] and y[s] are even)
 ok 15 - ok - same({6, s=8}, {4, s=4},__eq => x[s] and y[s] are even)

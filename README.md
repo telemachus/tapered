@@ -43,57 +43,9 @@ program for parsing.
   exception is raised; fails otherwise. (The exception is swallowed.) The
   `args` parameter expects a table. The table can be empty but not `nil`.
 
-## Helper methods
+## Helper method
 
-Tests will often need to set up the environment or prepare data in various ways.
-In order to make this simpler, two methods are provided to precede and follow
-each test.
-
-+ `setup` Define a global method named `setup`, and it will be run before each
-  test. The method itself can contain as much code as necessary to prepare for
-  the following tests.
-
-+ `teardown` Define a global method named `teardown`, and it will be run after
-  each test. The method itself can contain as much code as necessary to clean up
-  after each test.
-
-Please note that `setup` and `teardown` must be defined as **global** methods
-within your test file. Otherwise, they will not be called. In addition, you can
-redefine either method as any time in the file to change what `setup` or
-`teardown` mean at that point in execution. If you want to stop calling either
-of these methods, simply redefine it as `nil`. E.g.
-
-	local t = require 'tapered'
-
-	setup = function ()
-	  -- Start up a database. Fill it with test data. Go nuts.
-	end
-
-	-- Whatever is inside `setup` is done *before* each of the tests below.
-	-- For whatever reason, we currently have no `teardown` code, so nothing
-	-- is run after these three tests.
-	t.is(x, y, msg)
-	t.isnt(a,b, msg)
-	t.same(obj1, obj2, msg)
-
-	setup = function ()
-	  -- Redefine setup for later tests.
-	end
-
-	teardown = function ()
-	  -- Define a teardown method now
-	end
-
-	-- Now whatever is inside `setup` will be done before each test below;
-	-- whatever is in `teardown` will be done after each test.
-	t.is(p, q, msg)
-	t.like(str, pattern, msg)
-
-	setup = nil
-	-- `setup` will no longer be called, but `teardown` still will.
-	-- And so on...
-
-In addition, a method is available to show how many tests were run. (This output
+A method is available to show how many tests were run. (This output
 is required for [TAP compliance][tap], which may matter in some cases.) 
 
 [tap]: http://testanything.org/tap-specification.html
@@ -122,7 +74,7 @@ is required for [TAP compliance][tap], which may matter in some cases.)
 The module provides four informational functions that return strings. They
 should be self-explanatory.
 
-+ `version() -- 2.2.0`
++ `version() -- 2.3.0`
 
 + `author() -- Peter Aronoff`
 
@@ -140,6 +92,9 @@ much for code as for ideas about testing and simplicity.
 
 Thanks in particular to [Pierre Chapuis][pchapuis] for help with ideas and
 getting continuous integration for tapered.
+
+An anonymous email showed me that my setup and teardown methods had a logical
+flaw. As a result, I've removed those methods. I appreciate the report.
 
 All the mistakes are mine. See [version history][c] for release details.
 

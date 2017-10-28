@@ -53,6 +53,11 @@
 + The repo is now housed on [Github](https://github.com/telemachus/tapered)
 + CI is now provided by [Travis.ci](https://travis-ci.org/telemachus/tapered)
 
+## *2.3.0-1* (October 15, 2017)
+
++ Remove `setup()` and `teardown()`
++ Update to use luarocks 2.4.3 for testing on Travis
+
 Would you rather view the [documentation][d]?
 
 [d]: /README.md

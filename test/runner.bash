@@ -6,18 +6,6 @@
 	[ "$output" = "" ]
 }
 
-@test "setup and teardown hooks" {
-	run lua -lluacov setup-teardown-test.lua
-	[ "$status" -eq 0 ]
-	[ "$output" = "$(cat setup-teardown-result.txt)" ]
-}
-
-@test "dynamic setup and teardown hooks" {
-	run lua -lluacov dynamic-setup-teardown-test.lua
-	[ "$status" -eq 0 ]
-	[ "$output" = "$(cat dynamic-setup-teardown-result.txt)" ]
-}
-
 @test "ok and nok" {
 	run lua -lluacov ok-nok-test.lua
 	[ "$status" -eq 2 ]

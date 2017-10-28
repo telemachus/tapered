@@ -4,7 +4,7 @@ sudo: false
 
 env:
   global:
-    - LUAROCKS=2.3.0
+    - LUAROCKS=2.4.3
   matrix:
     - LUA=lua5.1
     - LUA=lua5.2
@@ -15,7 +15,7 @@ env:
 
 branches:
   only:
-    - travis
+    - bugfix
     - master
 
 before_install:

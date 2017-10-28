@@ -1,7 +1,7 @@
 ok 1 - ok - ok(true)
 not ok 2 - not ok - ok(false)
-# Trouble in ok-nok-test.lua around line 9
+# Trouble in ok-nok-test.lua around line 8
 ok 3 - ok - nok(false)
 not ok 4 - not ok - nok(true)
-# Trouble in ok-nok-test.lua around line 11
+# Trouble in ok-nok-test.lua around line 10
 1..4

@@ -1,6 +1,7 @@
 package.path = '../src/?.lua;' .. package.path
-tap = require 'tapered'
+local tap = require 'tapered'
 
+-- luacheck: globals setup teardown
 function setup()
   print("# I'm a little teapot.")
 end

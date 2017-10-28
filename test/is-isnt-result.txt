@@ -1,43 +1,43 @@
 ok 1 - ok - is(2+1, 3)
 not ok 2 - not ok - is(2+2, 3)
-# Trouble in is-isnt-test.lua around line 9
+# Trouble in is-isnt-test.lua around line 8
 ok 3 - ok - is(print, print)
 not ok 4 - not ok - is(print, 3)
-# Trouble in is-isnt-test.lua around line 11
+# Trouble in is-isnt-test.lua around line 10
 ok 5 - ok - is("hello", "hello")
 not ok 6 - not ok - is("goodbye", "hello")
-# Trouble in is-isnt-test.lua around line 13
+# Trouble in is-isnt-test.lua around line 12
 ok 7 - ok - is(nil, nil)
 not ok 8 - not ok - is(nil, false)
-# Trouble in is-isnt-test.lua around line 15
+# Trouble in is-isnt-test.lua around line 14
 ok 9 - ok - is(false, false)
 ok 10 - ok - is(true, true)
 not ok 11 - not ok - is(true, false)
-# Trouble in is-isnt-test.lua around line 18
+# Trouble in is-isnt-test.lua around line 17
 not ok 12 - not ok - is(false, true)
-# Trouble in is-isnt-test.lua around line 19
+# Trouble in is-isnt-test.lua around line 18
 ok 13 - ok - isnt(2+2, 3)
 not ok 14 - not ok - isnt(2+2, 4)
-# Trouble in is-isnt-test.lua around line 21
+# Trouble in is-isnt-test.lua around line 20
 ok 15 - ok - isnt(3, print)
-ok 16 - ok - isnt(print, exit)
+ok 16 - ok - isnt(print, os.exit)
 ok 17 - ok - isnt("hello", "goodbye")
 not ok 18 - not ok - isnt("hello", "hello")
-# Trouble in is-isnt-test.lua around line 25
+# Trouble in is-isnt-test.lua around line 24
 not ok 19 - not ok - isnt(nil, nil)
-# Trouble in is-isnt-test.lua around line 26
+# Trouble in is-isnt-test.lua around line 25
 ok 20 - ok - isnt(nil, false)
 not ok 21 - not ok - isnt(false, false)
-# Trouble in is-isnt-test.lua around line 28
+# Trouble in is-isnt-test.lua around line 27
 not ok 22 - not ok - isnt(true, true)
-# Trouble in is-isnt-test.lua around line 29
+# Trouble in is-isnt-test.lua around line 28
 ok 23 - ok - isnt(true, false)
 ok 24 - ok - isnt(false, true)
 ok 25 - ok - isnt(nil, false)
 not ok 26 - not ok - isnt(false, false)
-# Trouble in is-isnt-test.lua around line 33
+# Trouble in is-isnt-test.lua around line 32
 not ok 27 - not ok - isnt(true, true)
-# Trouble in is-isnt-test.lua around line 34
+# Trouble in is-isnt-test.lua around line 33
 ok 28 - ok - isnt(true, false)
 ok 29 - ok - isnt(false, true)
 1..29

@@ -1,6 +1,5 @@
 package.path = '../src/?.lua;' .. package.path
 local tap = require 'tapered'
-local error = error
 
 --- pass and fail
 -- pass([msg]) is not a test. It always passes.
