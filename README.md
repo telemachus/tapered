@@ -74,7 +74,7 @@ is required for [TAP compliance][tap], which may matter in some cases.)
 The module provides four informational functions that return strings. They
 should be self-explanatory.
 
-+ `version() -- 2.3.0`
++ `version() -- 2.3.1`
 
 + `author() -- Peter Aronoff`
 
@@ -110,7 +110,7 @@ All the mistakes are mine. See [version history][c] for release details.
 
 ---
 
-(c) 2012-2017 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][li] for
+(c) 2012-2018 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][li] for
 details.
 
 [li]: /LICENSE.md

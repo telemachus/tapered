@@ -58,13 +58,20 @@
 + Remove `setup()` and `teardown()`
 + Update to use luarocks 2.4.3 for testing on Travis
 
+## *2.3.0-1* (October 15, 2017)
+
++ Updated to test against LuaJit 2.0.5
++ Updated to test against Lua 5.3.5
++ Updated to remove a minor luacheck warning about unpack
++ Updated to recognize that it’s 2018
+
 Would you rather view the [documentation][d]?
 
 [d]: /README.md
 
 ---
 
-(c) 2012-2017 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][l] for
+(c) 2012-2018 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][l] for
 details.
 
 [l]: /LICENSE.md

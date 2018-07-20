@@ -6,7 +6,7 @@ local sprintf = string.format
 local str_find = string.find
 local tonumber = tonumber
 -- Lua 5.3 moved unpack to table.unpack
-local unpack = unpack or table.unpack
+local unpack = unpack or table.unpack -- luacheck: compat
 local write = io.write
 local rawget = rawget
 local getmetatable = getmetatable
@@ -155,7 +155,7 @@ local done = function (n)
 end
 
 local version = function ()
-  return "2.3.0"
+  return "2.3.1"
 end
 
 local author = function ()

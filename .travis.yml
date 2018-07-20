@@ -4,7 +4,7 @@ sudo: false
 
 env:
   global:
-    - LUAROCKS=2.4.3
+    - LUAROCKS=2.4.4
   matrix:
     - LUA=lua5.1
     - LUA=lua5.2
@@ -15,8 +15,8 @@ env:
 
 branches:
   only:
-    - bugfix
     - master
+    - dev
 
 before_install:
   - source .travis/setenv_lua.sh
