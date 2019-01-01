@@ -71,7 +71,7 @@ Would you rather view the [documentation][d]?
 
 ---
 
-(c) 2012-2018 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][l] for
+(c) 2012-2019 Peter Aronoff. BSD 3-Clause license; see [LICENSE.md][l] for
 details.
 
 [l]: /LICENSE.md
