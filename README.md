@@ -1,4 +1,4 @@
-# tapered [![Build Status](https://travis-ci.org/telemachus/tapered.svg?branch=master)](https://travis-ci.org/telemachus/tapered) [![Coverage](https://codecov.io/gh/telemachus/tapered/branch/master/graph/badge.svg)](https://codecov.io/gh/telemachus/tapered)
+# tapered
 
 ## Synopsis
 
